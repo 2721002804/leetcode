@@ -207,6 +207,23 @@ func moveZeroes(nums []int) {
 		nums[i] = 0
 	}
 }
+
+//167. 两数之和 II - 输入有序数组
+func twoSum2(numbers []int, target int) []int {
+	i := 0
+	j := len(numbers) - 1
+	for i < j {
+		sum := numbers[i] + numbers[j]
+		if sum == target {
+			return []int{i + 1, j + 1}
+		} else if sum < target {
+			i++
+		} else {
+			j--
+		}
+	}
+	return []int{}
+}
 func main() {
 	//nums := []int{2, 7, 11, 15}
 	//fmt.Println(twoSum(nums, 9))
