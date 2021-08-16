@@ -193,6 +193,20 @@ func QuickSort(a []int, left, right int) {
 	QuickSort(a, left, j-1)
 	QuickSort(a, j+1, right)
 }
+
+//283. 移动零
+func moveZeroes(nums []int) {
+	j := 0
+	for i := 0; i < len(nums); i++ {
+		if nums[i] != 0 {
+			nums[j] = nums[i]
+			j++
+		}
+	}
+	for i := j; i < len(nums); i++ {
+		nums[i] = 0
+	}
+}
 func main() {
 	//nums := []int{2, 7, 11, 15}
 	//fmt.Println(twoSum(nums, 9))
