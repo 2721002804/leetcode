@@ -224,6 +224,47 @@ func twoSum2(numbers []int, target int) []int {
 	}
 	return []int{}
 }
+
+//15. 三数之和
+func threeSum(nums []int) [][]int {
+	res := [][]int{}
+	n := len(nums)
+	if n == 0 {
+		return res
+	}
+	sort.Ints(nums)
+	if nums[0] > 0 {
+		return res
+	}
+	for i := 0; i < n; i++ {
+		if nums[i] > 0 {
+			continue
+		}
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		l := i + 1
+		r := n - 1
+		for r > l {
+			if nums[i]+nums[l]+nums[r] == 0 {
+				res = append(res, []int{nums[i], nums[l], nums[r]})
+				for l < r && nums[l] == nums[l+1] {
+					l++
+				}
+				for l < r && nums[r] == nums[r-1] {
+					r--
+				}
+				l++
+				r--
+			} else if nums[i]+nums[l]+nums[r] > 0 {
+				r--
+			} else {
+				l++
+			}
+		}
+	}
+	return res
+}
 func main() {
 	//nums := []int{2, 7, 11, 15}
 	//fmt.Println(twoSum(nums, 9))
